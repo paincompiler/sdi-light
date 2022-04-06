@@ -7,24 +7,24 @@
 ## 安装 Tengine
 我们以 CentOS 环境为例来进行安装配置。
 
-1. 安装必要的依赖，为编译 module 作准备
+### 安装必要的依赖，为编译 module 作准备
 ```bash
 yum install -y gcc gcc-c++ automake pcre pcre-devel zlip zlib-devel openssl openssl-devel
 ```
 
-2. 从官网下载 Tengine 的源码包
+### 从官网下载 Tengine 的源码包
 ```bash
 wget https://tengine.taobao.org/download/tengine-2.3.3.tar.gz
 tar -xf tengine-2.3.3.tar.gz
 ```
 
-3. 下载 echo module 的源码包，并解压到 tengine 的 module 目录（假设 tengine 目录在 /app/download/tengine-2.3.3）
+### 下载 echo module 的源码包，并解压到 tengine 的 module 目录（假设 tengine 目录在 /app/download/tengine-2.3.3）
 ```bash
 wget https://codeload.github.com/openresty/echo-nginx-module/tar.gz/refs/tags/v0.62
 tar -xf echo-nginx-module-0.62 -C app/download/tengine-2.3.3/modules/echo-nginx-module
 ```
 
-4. 编译
+### 编译
 ```bash
 /app/download/tengine-2.3.3/configure --prefix=/app/tengine --add-module=/app/download/tengine-2.3.3/modules/echo-nginx-module --add-module=/app/download/tengine-2.3.3/modules/ngx_http_upstream_check_module --with-stream --with-stream_ssl_module
 make && make install
@@ -41,7 +41,7 @@ conf
 
 ```
 
-1. nginx.conf 
+### nginx.conf 
 
 核心是定义了 `sa_extractor` 这个 log_format，方便后续神策的程序解析数据
 
@@ -80,7 +80,7 @@ http {
 
 ```
 
-2. data_import.conf
+### data_import.conf
 
 核心部分是 sa 和 sa.gif 作为数据接收的 URI，并按时间对日志文件进行切分
 
